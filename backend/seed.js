@@ -21,7 +21,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/him_gu
 
 async function seedDatabase() {
   console.log('========================================================');
-  console.log('       HIM-Guard Database Seeder - Himachal Pradesh     ');
+  console.log('       PurvaDrishti Database Seeder - NER Region        ');
   console.log('========================================================');
 
   try {
@@ -32,22 +32,22 @@ async function seedDatabase() {
     // 1. Seed Districts
     await District.deleteMany({});
     const insertedDistricts = await District.insertMany(seedDistricts);
-    console.log(`[✓] Seeded ${insertedDistricts.length} Himachal Pradesh Districts (Kangra, Mandi, Shimla, etc.)`);
+    console.log(`[✓] Seeded ${insertedDistricts.length} NER Districts`);
 
     // 2. Seed Roads
     await Road.deleteMany({});
     const insertedRoads = await Road.insertMany(seedRoads);
-    console.log(`[✓] Seeded ${insertedRoads.length} High-Risk Highway Corridors (NH-05, NH-21, NH-154, etc.)`);
+    console.log(`[✓] Seeded ${insertedRoads.length} High-Risk Highway Corridors`);
 
     // 3. Seed Alerts
     await Alert.deleteMany({});
     const insertedAlerts = await Alert.insertMany(seedAlerts);
-    console.log(`[✓] Seeded ${insertedAlerts.length} Disaster Alerts (Flash Floods, Landslides, etc.)`);
+    console.log(`[✓] Seeded ${insertedAlerts.length} Disaster Alerts`);
 
     // 4. Seed Drones
     await Drone.deleteMany({});
     const insertedDrones = await Drone.insertMany(seedDrones);
-    console.log(`[✓] Seeded ${insertedDrones.length} Aerial Surveillance Drones (Trishul, Garuda, etc.)`);
+    console.log(`[✓] Seeded ${insertedDrones.length} Aerial Surveillance Drones`);
 
     // 5. Seed Fire Risks
     await FireRisk.deleteMany({});
@@ -57,13 +57,13 @@ async function seedDatabase() {
     // 6. Seed Historical Incidents
     await HistoricalIncident.deleteMany({});
     const insertedHistory = await HistoricalIncident.insertMany(seedHistoricalIncidents);
-    console.log(`[✓] Seeded ${insertedHistory.length} Historical Disaster Records (2017-2023)`);
+    console.log(`[✓] Seeded ${insertedHistory.length} Historical Disaster Records`);
 
-    console.log('\n[SUCCESS] Database populated with full Himachal Pradesh disaster monitoring dataset!');
+    console.log('\n[SUCCESS] Database populated with full NER disaster monitoring dataset!');
     process.exit(0);
   } catch (error) {
     console.error('\n[ERROR] Seeding failed:', error.message);
-    console.log('Note: If MongoDB server is not running locally, the HIM-Guard backend will automatically use its built-in in-memory demo dataset.');
+    console.log('Note: If MongoDB server is not running locally, the PurvaDrishti backend will automatically use its built-in in-memory demo dataset.');
     process.exit(1);
   }
 }

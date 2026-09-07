@@ -1,21 +1,18 @@
-// Constants for HIM-Guard
+// Constants for PurvaDrishti (Northeast India Regional Intelligence)
 
-export const HIMACHAL_CENTER = [31.8, 77.2];
-export const DEFAULT_MAP_ZOOM = 8;
+export const NORTHEAST_CENTER = [26.2006, 92.9376];
+export const REGIONAL_CENTER = [26.2006, 92.9376];
+export const DEFAULT_MAP_ZOOM = 7.5;
 
-export const HP_DISTRICTS = [
-  { name: 'Kangra', lat: 32.0998, lng: 76.2691, hq: 'Dharamshala' },
-  { name: 'Mandi', lat: 31.5892, lng: 76.9182, hq: 'Mandi' },
-  { name: 'Shimla', lat: 31.1048, lng: 77.1734, hq: 'Shimla' },
-  { name: 'Kullu', lat: 31.9579, lng: 77.1095, hq: 'Kullu' },
-  { name: 'Solan', lat: 30.9084, lng: 77.0999, hq: 'Solan' },
-  { name: 'Sirmaur', lat: 30.5599, lng: 77.2955, hq: 'Nahan' },
-  { name: 'Hamirpur', lat: 31.6862, lng: 76.5213, hq: 'Hamirpur' },
-  { name: 'Una', lat: 31.4685, lng: 76.2708, hq: 'Una' },
-  { name: 'Bilaspur', lat: 31.3260, lng: 76.7567, hq: 'Bilaspur' },
-  { name: 'Chamba', lat: 32.5534, lng: 76.1258, hq: 'Chamba' },
-  { name: 'Lahaul and Spiti', lat: 32.5710, lng: 77.0320, hq: 'Keylong' },
-  { name: 'Kinnaur', lat: 31.6510, lng: 78.4752, hq: 'Reckong Peo' }
+export const NORTHEAST_STATES = [
+  { name: 'Assam', lat: 26.2006, lng: 92.9376, capital: 'Dispur' },
+  { name: 'Meghalaya', lat: 25.5788, lng: 91.8933, capital: 'Shillong' },
+  { name: 'Arunachal Pradesh', lat: 27.0844, lng: 93.6053, capital: 'Itanagar' },
+  { name: 'Sikkim', lat: 27.3389, lng: 88.6065, capital: 'Gangtok' },
+  { name: 'Nagaland', lat: 25.6751, lng: 94.1086, capital: 'Kohima' },
+  { name: 'Manipur', lat: 24.8170, lng: 93.9368, capital: 'Imphal' },
+  { name: 'Mizoram', lat: 23.7271, lng: 92.7176, capital: 'Aizawl' },
+  { name: 'Tripura', lat: 23.8315, lng: 91.2868, capital: 'Agartala' }
 ];
 
 export const SEVERITY_COLORS = {

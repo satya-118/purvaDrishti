@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// District Model: Stores geographic and disaster risk parameters for each of the 12 Himachal Pradesh districts
+// District Model: Stores geographic and disaster risk parameters for each of the NER districts
 const districtSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   headquarters: { type: String, default: '' },

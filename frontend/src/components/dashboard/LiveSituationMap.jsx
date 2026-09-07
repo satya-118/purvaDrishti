@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Settings, Plus, Minus, Crosshair, Layers, CloudRain, AlertTriangle, Route, Flame } from 'lucide-react';
+import { Settings, Plus, Minus, Crosshair, CloudRain, AlertTriangle, Route, Flame } from 'lucide-react';
 
-// Custom HTML Markers matching the reference design system
+// Custom HTML Markers matching the PurvaDrishti design system
 const createMapIcon = (htmlContent, size = 26) => {
   return L.divIcon({
-    className: 'him-leaflet-marker',
+    className: 'pd-leaflet-marker',
     html: htmlContent,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
@@ -15,7 +15,7 @@ const createMapIcon = (htmlContent, size = 26) => {
   });
 };
 
-// Markers matching reference image exactly
+// Markers matching design language
 const mapIcons = {
   criticalTriangle: createMapIcon(`
     <div style="width:28px;height:28px;border-radius:50%;background:#DC2626;border:2.5px solid #FFFFFF;box-shadow:0 2px 8px rgba(220,38,38,0.45);display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;animation:pulse-marker 2s infinite;">
@@ -48,12 +48,12 @@ const mapIcons = {
   `, 24)
 };
 
-// Map controller to guarantee fit bounds & responsiveness
+// Map controller centered on Northeast India
 function MapController() {
   const map = useMap();
   useEffect(() => {
     map.invalidateSize();
-    map.setView([31.85, 77.20], 8);
+    map.setView([26.2006, 92.9376], 7.5);
   }, [map]);
   return null;
 }
@@ -68,149 +68,116 @@ export function LiveSituationMap({ onSelectDistrict }) {
   });
   const [showLayerMenu, setShowLayerMenu] = useState(false);
 
-  // Real geographical places across Himachal Pradesh
+  // Real geographical places across Northeast India
   const realPlaceMarkers = [
     {
-      id: 'kullu-catchment',
-      name: 'Kullu Valley Catchment',
-      district: 'Kullu',
-      coords: [31.9578, 77.1095],
+      id: 'shillong-escarpment',
+      name: 'Shillong Ridge & Mawsynram Escarpment',
+      district: 'East Khasi Hills',
+      coords: [25.2986, 91.7314],
       type: 'criticalTriangle',
       category: 'landslide',
-      risk: 'Critical Warning (82/100)',
-      info: 'Flash-flood warning & active slope liquefaction along Beas river corridor',
+      risk: 'Critical Warning (84/100)',
+      info: 'Active slope fissures and rapid saturated runoff along the southern plateau cliffs',
       severity: 'Critical'
     },
     {
-      id: 'manali-slip',
-      name: 'Manali–Rohtang Pass (NH-03)',
-      district: 'Kullu',
-      coords: [32.2396, 77.1887],
+      id: 'cherrapunji-met-station',
+      name: 'Cherrapunji High-Altitude Met Gauge',
+      district: 'East Khasi Hills',
+      coords: [25.2750, 91.5822],
+      type: 'rainStation',
+      category: 'rainfall',
+      risk: '148 mm / 3hr',
+      info: 'Heavy precipitation event; soil shear threshold exceeded',
+      severity: 'High'
+    },
+    {
+      id: 'itanagar-pass-corridor',
+      name: 'Itanagar–Banderdewa Highway (NH-415)',
+      district: 'Papum Pare',
+      coords: [27.0844, 93.6053],
       type: 'highTriangle',
       category: 'landslide',
       risk: 'High Landslide Risk',
-      info: 'Active scree movement and hill fissures reported',
+      info: 'Continuous slope creep and roadside boulder movements flagged by radar',
       severity: 'High'
     },
     {
-      id: 'kangra-dharamshala-slip',
-      name: 'Dharamshala Slip Zone',
-      district: 'Kangra',
-      coords: [32.2190, 76.3234],
-      type: 'highTriangle',
-      category: 'landslide',
-      risk: 'High Risk',
-      info: 'Heavy runoff causing hillside erosion near McLeod Ganj',
-      severity: 'High'
-    },
-    {
-      id: 'kangra-rain-station',
-      name: 'Kangra Valley Met Gauge',
-      district: 'Kangra',
-      coords: [32.0998, 76.2691],
-      type: 'rainStation',
-      category: 'rainfall',
-      risk: '62 mm / 3hr',
-      info: 'Precipitation exceeding local drainage threshold',
-      severity: 'High'
-    },
-    {
-      id: 'chamba-ravi-station',
-      name: 'Ravi River Gauge Station',
-      district: 'Chamba',
-      coords: [32.5534, 76.1258],
-      type: 'rainStation',
-      category: 'rainfall',
-      risk: 'Moderate Rain',
-      info: 'Ravi water level elevated by 1.4m',
-      severity: 'Moderate'
-    },
-    {
-      id: 'mandi-pandoh-road',
-      name: 'NH-21 Pandoh Gorge Corridor',
-      district: 'Mandi',
-      coords: [31.6700, 77.0500],
-      type: 'roadIncident',
-      category: 'road',
-      risk: 'Restricted Traffic',
-      info: 'Single lane operational after mudflow clearance',
-      severity: 'Moderate'
-    },
-    {
-      id: 'mandi-aut-tunnel',
-      name: 'Aut Tunnel Bypass',
-      district: 'Mandi',
-      coords: [31.7456, 77.2131],
+      id: 'guwahati-kamrup-station',
+      name: 'Kamrup Escarpment Station',
+      district: 'Kamrup Metro',
+      coords: [26.1445, 91.7362],
       type: 'highTriangle',
       category: 'landslide',
       risk: 'Moderate Watch',
-      info: 'Telemetry sensors monitoring slope displacement',
-      severity: 'Moderate'
+      info: 'Brahmaputra hill slope stability sensors monitoring alluvial bedrock',
+      severity: 'High'
     },
     {
-      id: 'shimla-summerhill-fire',
-      name: 'Summer Hill Forest Ridge',
-      district: 'Shimla',
-      coords: [31.1120, 77.1400],
-      type: 'fireRisk',
-      category: 'fire',
-      risk: 'Elevated Fire Risk',
-      info: 'Dry pine biomass & high thermal index',
-      severity: 'Moderate'
-    },
-    {
-      id: 'shimla-met-station',
-      name: 'Shimla Met Station',
-      district: 'Shimla',
-      coords: [31.1048, 77.1734],
-      type: 'rainStation',
-      category: 'rainfall',
-      risk: 'Normal Rain',
-      info: '28 mm recorded in last 24h',
-      severity: 'Low'
-    },
-    {
-      id: 'kinnaur-nigulsari',
-      name: 'Nigulsari NH-05 Section',
-      district: 'Kinnaur',
-      coords: [31.5420, 77.9250],
-      type: 'criticalTriangle',
-      category: 'landslide',
-      risk: 'Critical Landslide Warning',
-      info: 'Shooting stone hazard flagged by early-warning radar',
+      id: 'dima-hasao-nh27',
+      name: 'Dima Hasao Mountain Corridor (NH-27)',
+      district: 'Dima Hasao',
+      coords: [25.1833, 93.0167],
+      type: 'roadIncident',
+      category: 'road',
+      risk: 'Restricted Transit',
+      info: 'Single lane operational after mudflow clearance; emergency repair crews on site',
       severity: 'Critical'
     },
     {
-      id: 'kinnaur-baspa-station',
-      name: 'Sangla / Baspa River Gauge',
-      district: 'Kinnaur',
-      coords: [31.4200, 78.2600],
-      type: 'rainStation',
-      category: 'rainfall',
-      risk: '45 mm Rain',
-      info: 'Baspa catchment runoff actively monitored',
+      id: 'gangtok-nathula-section',
+      name: 'Gangtok–Nathula Corridor (JLN Marg)',
+      district: 'East Sikkim',
+      coords: [27.3389, 88.6065],
+      type: 'highTriangle',
+      category: 'landslide',
+      risk: 'High Altitude Slip Watch',
+      info: 'Telemetry sensors tracking soil saturation in steep mountain pass',
+      severity: 'High'
+    },
+    {
+      id: 'kohima-bypass-ridge',
+      name: 'Kohima Mountain Ridge Node',
+      district: 'Kohima',
+      coords: [25.6751, 94.1086],
+      type: 'highTriangle',
+      category: 'landslide',
+      risk: 'Moderate Risk',
+      info: 'Active inclinometers monitoring retaining wall displacement on NH-29',
       severity: 'Moderate'
     },
     {
-      id: 'solan-parwanoo-road',
-      name: 'Solan–Parwanoo Bypass (NH-05)',
-      district: 'Solan',
-      coords: [30.9084, 77.0999],
-      type: 'roadIncident',
-      category: 'road',
-      risk: 'Caution / Open',
-      info: 'Regular traffic flow with slope vigilance',
+      id: 'aizawl-ridge-station',
+      name: 'Aizawl Ridge Doppler Station',
+      district: 'Aizawl',
+      coords: [23.7271, 92.7176],
+      type: 'rainStation',
+      category: 'rainfall',
+      risk: 'Normal Rain (22 mm)',
+      info: 'Precipitation within standard seasonal baseline',
       severity: 'Low'
     },
     {
-      id: 'sirmaur-giri-station',
-      name: 'Giri River Basin Station',
-      district: 'Sirmaur',
-      coords: [30.5599, 77.2955],
+      id: 'imphal-valley-station',
+      name: 'Imphal Valley Telemetry Station',
+      district: 'Imphal West',
+      coords: [24.8170, 93.9368],
       type: 'rainStation',
       category: 'rainfall',
-      risk: 'Normal Rain',
-      info: 'River flow stable',
+      risk: 'Normal Hydrology',
+      info: 'River basin telemetry stable across all monitoring channels',
+      severity: 'Low'
+    },
+    {
+      id: 'agartala-foothills-node',
+      name: 'West Tripura Sensor Node',
+      district: 'West Tripura',
+      coords: [23.8315, 91.2868],
+      type: 'fireRisk',
+      category: 'fire',
+      risk: 'Normal Biomass',
+      info: 'Thermal index low; moderate relative humidity',
       severity: 'Low'
     }
   ];
@@ -223,8 +190,8 @@ export function LiveSituationMap({ onSelectDistrict }) {
     if (mapRef.current) mapRef.current.zoomOut();
   };
 
-  const handleCenterHP = () => {
-    if (mapRef.current) mapRef.current.setView([31.85, 77.20], 8);
+  const handleCenterNE = () => {
+    if (mapRef.current) mapRef.current.setView([26.2006, 92.9376], 7.5);
   };
 
   return (
@@ -237,7 +204,7 @@ export function LiveSituationMap({ onSelectDistrict }) {
             Live Situation Map
           </h2>
           <p className="text-[12px] sm:text-[12.5px] text-[#6E756F] font-medium">
-            Current risk conditions across Himachal Pradesh
+            Current risk conditions across Northeast India
           </p>
         </div>
 
@@ -298,11 +265,11 @@ export function LiveSituationMap({ onSelectDistrict }) {
             )}
           </div>
 
-          {/* Reset / Locate HP Center */}
+          {/* Reset / Locate Northeast Center */}
           <button
-            onClick={handleCenterHP}
+            onClick={handleCenterNE}
             className="w-8 h-8 rounded-xl bg-white border border-[#E5E3D8] hover:bg-[#FAF9F5] text-[#4A534D] flex items-center justify-center shadow-xs transition-colors"
-            title="Center Himachal Pradesh"
+            title="Center Northeast Region"
           >
             <Crosshair size={15} />
           </button>
@@ -330,9 +297,9 @@ export function LiveSituationMap({ onSelectDistrict }) {
       {/* Interactive Leaflet Map Container */}
       <div className="relative w-full h-[400px] sm:h-[450px] md:h-[490px] rounded-2xl border border-[#E2DED2] overflow-hidden">
         <MapContainer
-          center={[31.85, 77.20]}
-          zoom={8}
-          minZoom={7}
+          center={[26.2006, 92.9376]}
+          zoom={7.5}
+          minZoom={6}
           maxZoom={14}
           ref={mapRef}
           zoomControl={false}
@@ -341,15 +308,14 @@ export function LiveSituationMap({ onSelectDistrict }) {
         >
           <MapController />
 
-          {/* Clean, light CartoDB Voyager raster tiles for real geographical places */}
+          {/* Clean, light CartoDB Voyager raster tiles */}
           <TileLayer
             url="https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=cb1_2kyh_1_04ce1902ad036349dac0a0ac"
-            
           />
 
-          {/* Concentric Heat Halo over Kullu Valley (Critical Area from reference) */}
+          {/* Concentric Heat Halo over Meghalaya (Critical Risk Area) */}
           <CircleMarker
-            center={[31.9578, 77.1095]}
+            center={[25.2986, 91.7314]}
             radius={65}
             pathOptions={{
               color: '#DC2626',
@@ -360,7 +326,7 @@ export function LiveSituationMap({ onSelectDistrict }) {
             }}
           />
           <CircleMarker
-            center={[31.9578, 77.1095]}
+            center={[25.2986, 91.7314]}
             radius={42}
             pathOptions={{
               color: '#DC2626',
@@ -370,7 +336,7 @@ export function LiveSituationMap({ onSelectDistrict }) {
             }}
           />
           <CircleMarker
-            center={[31.9578, 77.1095]}
+            center={[25.2986, 91.7314]}
             radius={22}
             pathOptions={{
               color: '#991B1B',
@@ -380,10 +346,10 @@ export function LiveSituationMap({ onSelectDistrict }) {
             }}
           />
 
-          {/* Amber Heat Aura over Dharamshala/Kangra */}
+          {/* Amber Heat Aura over Itanagar / Arunachal Ridge */}
           <CircleMarker
-            center={[32.2190, 76.3234]}
-            radius={35}
+            center={[27.0844, 93.6053]}
+            radius={38}
             pathOptions={{
               color: '#D8A32A',
               fillColor: '#D8A32A',
@@ -404,7 +370,7 @@ export function LiveSituationMap({ onSelectDistrict }) {
                   click: () => onSelectDistrict && onSelectDistrict({ name: marker.district })
                 }}
               >
-                <Popup className="him-leaflet-popup">
+                <Popup className="pd-leaflet-popup">
                   <div className="p-1 font-sans select-none min-w-[190px]">
                     <div className="flex items-center justify-between gap-2 pb-1 mb-1 border-b border-[#EAE8E1]">
                       <strong className="text-[13px] text-[#18211E]">{marker.name}</strong>
@@ -427,7 +393,7 @@ export function LiveSituationMap({ onSelectDistrict }) {
             ))}
         </MapContainer>
 
-        {/* Floating Legend Card (Bottom-Left) matching reference design */}
+        {/* Floating Legend Card (Bottom-Left) matching design */}
         <div className="absolute bottom-3.5 left-3.5 z-[400] bg-white/95 backdrop-blur-sm border border-[#E5E3D8] rounded-xl p-3 shadow-[0_4px_16px_rgba(0,0,0,0.06)] text-[11px] font-medium text-[#18211E] min-w-[145px]">
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2">
@@ -471,8 +437,8 @@ export function LiveSituationMap({ onSelectDistrict }) {
           <div className="w-20 h-1.5 border-b-2 border-l-2 border-r-2 border-[#18211E]"></div>
           <div className="flex justify-between w-20 text-[9px] text-[#4A534D] font-mono mt-0.5">
             <span>0</span>
-            <span>25</span>
-            <span>50 km</span>
+            <span>50</span>
+            <span>100 km</span>
           </div>
         </div>
 
@@ -480,3 +446,5 @@ export function LiveSituationMap({ onSelectDistrict }) {
     </div>
   );
 }
+
+export default LiveSituationMap;

@@ -44,6 +44,7 @@ export default {
         serif: ['"DM Serif Display"', '"Playfair Display"', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        script: ['"Caveat"', 'cursive'],
       },
       borderRadius: {
         '2xl': '18px',

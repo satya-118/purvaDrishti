@@ -40,8 +40,10 @@ export function FireRiskPage() {
           </div>
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">MONITORED PINE BELTS</span>
+            <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">MONITORED FOREST BELTS</span>
             <span className="text-[26px] font-bold text-[#18211E] leading-tight">{fireRisks.length || 8}</span>
             <span className="text-[11px] font-medium text-[#7A827D]">Solan, Bilaspur, Mandi</span>
+            <span className="text-[11px] font-medium text-[#7A827D]">Karbi Anglong, Dampa, Garo Hills</span>
           </div>
         </div>
 
@@ -66,6 +68,7 @@ export function FireRiskPage() {
             <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">PEAK AMBIENT TEMP</span>
             <span className="text-[26px] font-bold text-[#18211E] leading-tight">{peakTemp}°C</span>
             <span className="text-[11px] font-medium text-[#7A827D]">Bilaspur scrub basin</span>
+            <span className="text-[11px] font-medium text-[#7A827D]">Garo Hills Valley Basin</span>
           </div>
         </div>
 

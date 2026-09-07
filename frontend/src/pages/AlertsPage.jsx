@@ -17,9 +17,9 @@ export function AlertsPage(props) {
   const [hazardType, setHazardType] = useState('Landslide');
   const [severity, setSeverity] = useState('High');
   const [riskScore, setRiskScore] = useState(75);
-  const [district, setDistrict] = useState('Mandi');
-  const [location, setLocation] = useState('Pandoh Gorge Corridor');
-  const [cause, setCause] = useState('Sudden rainfall downpour triggered active mudslide');
+  const [district, setDistrict] = useState('East Khasi Hills');
+  const [location, setLocation] = useState('Shillong Peak Bypass Corridor');
+  const [cause, setCause] = useState('Sudden monsoonal downpour triggered active mudslide');
   const [action, setAction] = useState('Deploy SDRF team and advise travelers to take alternate bypass');
   const [submitting, setSubmitting] = useState(false);
 
@@ -89,7 +89,7 @@ export function AlertsPage(props) {
             Disaster Early-Warning Alert Center
           </h1>
           <p className="text-[#7A827D] text-[13px] font-medium mt-0.5">
-            Broadcast and manage high-priority landslide, flash flood, and cloudburst advisories across Himachal Pradesh.
+            Broadcast and manage high-priority landslide, flash flood, and environmental risk advisories.
           </p>
         </div>
 
@@ -245,7 +245,7 @@ export function AlertsPage(props) {
                 <input
                   type="text"
                   className="w-full bg-white border border-[#E5E3D8] rounded-xl px-3.5 py-2 text-[#18211E] text-[13px] outline-none"
-                  placeholder="e.g. FLASH FLOOD WARNING: Upper Beas Basin"
+                  placeholder="e.g. FLASH FLOOD WARNING: Barak / Kopili River Basin"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required

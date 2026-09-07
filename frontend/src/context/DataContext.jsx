@@ -37,12 +37,12 @@ export function DataProvider({ children }) {
         getRainfallSummary().catch(() => null)
       ]);
 
-      setDistricts(distRes || []);
-      setRoads(roadsRes.data || []);
-      setDrones(dronesRes.data || []);
-      setFireRisks(fireRes.data || []);
-      setAlerts(alertsRes.data || []);
-      setWeatherData(weatherRes);
+      setDistricts((Array.isArray(distRes) ? distRes : distRes?.data) || []);
+      setRoads((Array.isArray(roadsRes) ? roadsRes : roadsRes?.data) || []);
+      setDrones((Array.isArray(dronesRes) ? dronesRes : dronesRes?.data) || []);
+      setFireRisks((Array.isArray(fireRes) ? fireRes : fireRes?.data) || []);
+      setAlerts((Array.isArray(alertsRes) ? alertsRes : alertsRes?.data) || []);
+      setWeatherData(weatherRes?.data || weatherRes || null);
 
     } catch (error) {
       console.error('[DataContext] Error loading system data:', error);

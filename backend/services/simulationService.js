@@ -1,6 +1,6 @@
 // HIM-Guard Emergency Simulation Engine
 // Simulates the impact of sudden excess rainfall (e.g. Cloudburst drill, +50mm, +100mm)
-// across Himachal Pradesh districts, roads, and active alerts.
+// across NER districts, roads, and active alerts.
 
 import { seedDistricts, seedRoads } from '../data/seedData.js';
 import { calculateLandslideRisk, getSeverityAndAction } from './riskEngine.js';
@@ -139,7 +139,7 @@ export function runRainfallSimulation(extraMm = 50, targetDistrict = 'all', curr
 
   return {
     extraMm: inputExtraMm,
-    targetDistrict: isAll ? 'All Himachal Pradesh' : targetDistrict,
+    targetDistrict: isAll ? 'All NER' : targetDistrict,
     summary: {
       criticalDistrictsBefore: originalCriticalCount,
       criticalDistrictsAfter: simulatedCriticalCount,

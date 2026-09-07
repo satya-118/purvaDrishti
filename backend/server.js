@@ -13,6 +13,7 @@ import fireRoutes from './routes/fireRoutes.js';
 import alertRoutes from './routes/alertRoutes.js';
 import historicalRoutes from './routes/historicalRoutes.js';
 import simulationRoutes from './routes/simulationRoutes.js';
+import fieldReportRoutes from './routes/fieldReportRoutes.js';
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ app.use(express.json());
 app.get('/api', (req, res) => {
   res.json({
     status: 'online',
-    system: 'HIM-Guard Disaster Monitoring & Early-Warning API (Himachal Pradesh)',
+    system: 'PurvaDrishti Disaster Monitoring & Early-Warning API (NER)',
     version: '1.0.0',
     endpoints: {
       districts: '/api/districts',
@@ -54,14 +55,35 @@ app.use('/api/fire', fireRoutes);
 app.use('/api/alerts', alertRoutes);
 app.use('/api/historical-incidents', historicalRoutes);
 app.use('/api/simulation', simulationRoutes);
+app.use('/api/reports', fieldReportRoutes);
 
 // 404 Handler for undefined API routes
-app.use((req, res) => {
+app.use('/api/*', (req, res) => {
   res.status(404).json({
     success: false,
     message: `API Route '${req.originalUrl}' not found.`
   });
 });
+
+// Serve frontend in production
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+if (process.env.NODE_ENV === 'production') {
+  const frontendPath = path.join(__dirname, '../frontend/dist');
+  app.use(express.static(frontendPath));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(frontendPath, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('PurvaDrishti API is running...');
+  });
+}
 
 // Global Error Handler
 app.use((err, req, res, next) => {
@@ -79,7 +101,7 @@ async function startServer() {
 
   app.listen(PORT, () => {
     console.log('====================================================');
-    console.log(`  HIM-Guard Backend Server running on port ${PORT}`);
+    console.log(`  PurvaDrishti Backend Server running on port ${PORT}`);
     console.log(`  Healthcheck: http://localhost:${PORT}/api`);
     console.log('====================================================');
   });

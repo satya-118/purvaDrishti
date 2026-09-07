@@ -19,15 +19,15 @@ export function HistoricalPage() {
         getHistoricalStats().catch(() => null)
       ]);
       setIncidents(incRes.data || [
-        { date: '2023-08-14', district: 'Shimla', location: 'Summer Hill Shiv Temple', hazardType: 'Landslide', severity: 'Critical', rainfall: 185, roadAffected: 'Summer Hill Road Blocked', casualties: 21, responseTime: '18 min', description: 'Massive slope liquefaction triggered by intense 48h cloudburst downpour.' },
-        { date: '2023-07-09', district: 'Mandi', location: 'Pandoh Beas River Corridor', hazardType: 'Flash Flood', severity: 'Critical', rainfall: 220, roadAffected: 'Chandigarh-Manali NH-21', casualties: 15, responseTime: '25 min', description: 'Catastrophic river surge washed away road segments & bridges.' },
-        { date: '2023-08-11', district: 'Kullu', location: 'Ani Block Market', hazardType: 'Cloudburst', severity: 'High', rainfall: 140, roadAffected: 'NH-305 Jalori Pass Route', casualties: 4, responseTime: '30 min', description: 'Multi-building structural collapse along fast drainage stream.' }
+        { date: '2023-08-14', district: 'East Khasi Hills', location: 'Shillong Peak Bypass Corridor', hazardType: 'Landslide', severity: 'Critical', rainfall: 195, roadAffected: 'GS Road (NH-6) Segment', casualties: 3, responseTime: '14 min', description: 'Slope liquefaction triggered by continuous 72h monsoonal downpour across Shillong plateau.' },
+        { date: '2023-07-09', district: 'Dima Hasao', location: 'Jatinga Valley Mountain Railway Cut', hazardType: 'Flash Flood', severity: 'Critical', rainfall: 240, roadAffected: 'Lumding–Badarpur Hill Line', casualties: 6, responseTime: '22 min', description: 'Flash flood and mudslip undermined embankment foundation and hillside road section.' },
+        { date: '2023-08-11', district: 'Papum Pare', location: 'Banderdewa Bypass Sector', hazardType: 'Landslide', severity: 'High', rainfall: 165, roadAffected: 'NH-415 Itanagar Highway', casualties: 2, responseTime: '28 min', description: 'Debris flow obstructed two lanes following intense convective storm cells.' }
       ]);
       setStats(statsRes || {
-        totalIncidents: 42,
-        totalCasualties: 124,
-        avgRainfallAtEvent: 154,
-        vulnerableBasin: 'Mandi / Beas Basin'
+        totalIncidents: 48,
+        totalCasualties: 38,
+        avgRainfallAtEvent: 172,
+        vulnerableBasin: 'Barak & Kopili Basins'
       });
     } catch (err) {
       console.error('Failed to load historical data:', err);
@@ -108,6 +108,7 @@ export function HistoricalPage() {
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">MOST VULNERABLE BASIN</span>
             <span className="text-[20px] font-bold text-[#18211E] leading-tight mt-1">{stats?.vulnerableBasin || 'Mandi / Beas'}</span>
+            <span className="text-[20px] font-bold text-[#18211E] leading-tight mt-1">{stats?.vulnerableBasin || 'Barak / Kopili'}</span>
             <span className="text-[11px] font-medium text-[#16A34A]">Highest frequency zone</span>
           </div>
         </div>
@@ -139,6 +140,13 @@ export function HistoricalPage() {
             <option value="Kinnaur">Kinnaur</option>
             <option value="Kangra">Kangra</option>
             <option value="Lahaul">Lahaul & Spiti</option>
+            <option value="">All Regional Districts</option>
+            <option value="East Khasi Hills">East Khasi Hills</option>
+            <option value="Dima Hasao">Dima Hasao</option>
+            <option value="Papum Pare">Papum Pare</option>
+            <option value="Kamrup Metro">Kamrup Metro</option>
+            <option value="Kohima">Kohima</option>
+            <option value="East Sikkim">East Sikkim</option>
           </select>
 
           <select
@@ -216,3 +224,5 @@ export function HistoricalPage() {
     </div>
   );
 }
+
+export default HistoricalPage;

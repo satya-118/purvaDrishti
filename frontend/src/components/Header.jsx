@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Bell, RefreshCw, ChevronDown } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Header({ onRefresh, isRefreshing, criticalAlertCount = 0, onNavigateHome }) {
   const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }));
+  const { lang, setLang } = useLanguage();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,7 +22,7 @@ export function Header({ onRefresh, isRefreshing, criticalAlertCount = 0, onNavi
           <Search size={15} className="text-[#8E958F] shrink-0" />
           <input 
             type="text" 
-            placeholder="Search district, location, alert..." 
+            placeholder="Search region, station, alert..." 
             className="bg-transparent border-none outline-none text-[13px] text-[#18211E] placeholder:text-[#8E958F] w-full"
           />
           <kbd className="text-[10px] font-mono text-[#8E958F] bg-white border border-[#E5E3D8] px-1.5 py-0.5 rounded shadow-xs">
@@ -48,6 +50,17 @@ export function Header({ onRefresh, isRefreshing, criticalAlertCount = 0, onNavi
           </span>
         </div>
 
+        {/* Language Selector */}
+        <select 
+          className="bg-white border border-[#E5E3D8] text-[#18211E] text-xs px-2 py-1.5 rounded-lg outline-none focus:border-[#234E3B]"
+          value={lang}
+          onChange={(e) => setLang(e.target.value)}
+        >
+          <option value="en">ENG</option>
+          <option value="hi">HIN</option>
+          <option value="as">ASM</option>
+        </select>
+
         {/* Live IST Time */}
         <div className="text-[12px] font-medium text-[#4A534D] min-w-[105px]">
           {time} IST
@@ -65,8 +78,8 @@ export function Header({ onRefresh, isRefreshing, criticalAlertCount = 0, onNavi
 
         {/* User Profile Avatar */}
         <div className="flex items-center gap-1.5 cursor-pointer pl-1 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 rounded-full bg-[#EFEEE7] text-[#18211E] border border-[#E5E3D8] flex items-center justify-center text-[11px] font-bold">
-            HG
+          <div className="w-8 h-8 rounded-full bg-[#19382B] text-white border border-[#234E3B] flex items-center justify-center text-[11px] font-bold">
+            PD
           </div>
           <ChevronDown size={14} className="text-[#8E958F]" />
         </div>

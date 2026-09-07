@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: purvadrishti
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # You will provide this in the Render Dashboard

@@ -61,7 +61,7 @@ export function RoadSafetyPage(props) {
             Highway & Mountain Road Vulnerability
           </h1>
           <p className="text-[#7A827D] text-[13px] font-medium mt-0.5">
-            Tracking rockfall hazards, mudflow blockages, drone verification feeds, and traffic advisories across state passes.
+            Tracking rockfall hazards, mudflow blockages, drone verification feeds, and traffic advisories across Northeast mountain corridors.
           </p>
         </div>
 

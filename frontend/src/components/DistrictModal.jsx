@@ -27,7 +27,7 @@ export function DistrictModal({ district, onClose }) {
   const sevStyle = getSeverityStyle(district.severity);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#18211E]/40 backdrop-blur-sm p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-999 flex items-center justify-center bg-[#18211E]/40 backdrop-blur-sm p-4" onClick={onClose}>
       <div 
         className="bg-white rounded-[24px] w-full max-w-[600px] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]" 
         onClick={(e) => e.stopPropagation()}

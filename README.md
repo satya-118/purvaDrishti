@@ -1,6 +1,6 @@
-# HIM-Guard 🏔️ 🛡️
+# PurvaDrishti 🏔️ 🛡️
 
-> A disaster monitoring and early-warning platform for Himachal Pradesh that combines rainfall tracking, landslide risk assessment, road vulnerability, forest fire monitoring, drone intelligence, alerts, and emergency simulations in one centralized dashboard.
+> A disaster monitoring and early-warning platform for Northeast India that combines rainfall tracking, landslide risk assessment, road vulnerability, forest fire monitoring, drone intelligence, alerts, and emergency simulations in one centralized dashboard.
 
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Backend-green?logo=node.js)
@@ -8,7 +8,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-success?logo=mongodb)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Styling-38B2AC?logo=tailwind-css)
 
-HIM-Guard was developed as a **Smart India Hackathon** project. It is designed to help authorities maintain situational awareness and trigger early warnings before extreme weather events escalate into full-scale disasters.
+PurvaDrishti is designed to help authorities maintain situational awareness and trigger early warnings before extreme weather events escalate into full-scale disasters across the Northeast region of India (NER).
 
 ---
 
@@ -34,11 +34,11 @@ HIM-Guard was developed as a **Smart India Hackathon** project. It is designed t
 
 ## Problem Statement
 
-Himachal Pradesh frequently experiences severe natural disasters driven by heavy rainfall, resulting in devastating landslides, flash floods, road blockages, and forest fires. Monitoring these risks traditionally requires checking multiple disparate systems (weather forecasts, geological surveys, traffic advisories, and forestry reports), making it difficult for disaster response teams to maintain a unified, real-time operating picture. 
+Northeast India frequently experiences severe natural disasters driven by heavy rainfall, resulting in devastating landslides, flash floods, road blockages, and forest fires. Monitoring these risks traditionally requires checking multiple disparate systems (weather forecasts, geological surveys, traffic advisories, and forestry reports), making it difficult for disaster response teams to maintain a unified, real-time operating picture. 
 
 ## The Solution
 
-HIM-Guard centralizes multiple environmental signals into a single, intuitive MERN-stack dashboard. It ingests weather data, applies weighted risk scoring formulas to calculate regional vulnerability, tracks blocked highways, monitors thermal anomalies for fires, and allows emergency commanders to broadcast early-warning alerts.
+PurvaDrishti centralizes multiple environmental signals into a single, intuitive MERN-stack dashboard. It ingests weather data, applies weighted risk scoring formulas to calculate regional vulnerability, tracks blocked highways, monitors thermal anomalies for fires, and allows emergency commanders to broadcast early-warning alerts.
 
 ```text
 Open-Meteo Weather API + Live Telemetry
@@ -57,7 +57,7 @@ Open-Meteo Weather API + Live Telemetry
 ## Key Features
 
 ### 🌧️ Rainfall Monitoring
-Integrates with the Open-Meteo API to pull live and forecasted precipitation data across 12 districts, complete with historical hourly trend charts.
+Integrates with the Open-Meteo API to pull live and forecasted precipitation data across Northeast states (Assam, Meghalaya, Arunachal Pradesh, Sikkim, Nagaland, Manipur, Mizoram, Tripura), complete with historical hourly trend charts.
 
 ### ⛰️ Landslide Risk Engine
 Uses a transparent formula-based scoring engine (0-100) combining rainfall density, slope gradient, soil saturation, and vegetation cover to classify district vulnerabilities (Low, Moderate, High, Critical).
@@ -66,7 +66,7 @@ Uses a transparent formula-based scoring engine (0-100) combining rainfall densi
 Tracks the status of critical mountain passes and highway corridors. Flags roads as "Clear," "Caution," or "Blocked" based on reported active slips.
 
 ### 🔥 Forest Fire Risk
-Monitors Chir Pine forest zones using thermal hotspots, needle dryness index, and wind speed to issue fire warnings.
+Monitors forest zones using thermal hotspots, needle dryness index, and wind speed to issue fire warnings.
 
 ### 🚁 Drone Monitoring
 A simulated UAV fleet management dashboard showing drone coordinates, battery levels, flight status, and live camera feed placeholders for aerial disaster assessment.
@@ -75,19 +75,13 @@ A simulated UAV fleet management dashboard showing drone coordinates, battery le
 A broadcast hub to issue, track, and resolve emergency advisories (e.g., Flash flood warnings) detailing severity, cause, location, and recommended action directives.
 
 ### 📜 Historical Incidents Archive
-A searchable repository of past disaster events spanning 2017–2023, tracking casualties, damages, and affected areas for pattern analysis.
+A searchable repository of past disaster events, tracking casualties, damages, and affected areas for pattern analysis.
 
 ### 🌩️ Emergency Simulation Sandbox
-An interactive tool that lets users simulate massive cloudburst events (e.g., +150mm rainfall) and instantly recalculates the entire state's risk scores and blocked roads to demonstrate predictive capabilities.
+An interactive tool that lets users simulate massive cloudburst events (e.g., +150mm rainfall) and instantly recalculates the entire region's risk scores and blocked roads to demonstrate predictive capabilities.
 
 ### 🗺️ Interactive GIS Map
-A fully interactive topographic map powered by Leaflet, visualizing district boundaries, heat anomalies, blocked roads, and deployed drones.
-
----
-
-## Screenshots
-
-> Screenshots will be added soon.
+A fully interactive topographic map powered by Leaflet, visualizing state/district boundaries, heat anomalies, blocked roads, and deployed drones.
 
 ---
 
@@ -111,12 +105,12 @@ Express REST API (Node.js)
 ## Project Structure
 
 ```text
-HIM-Guard/
+PurvaDrishti/
 ├── frontend/             # React Frontend Application
 │   ├── src/
 │   │   ├── api/          # Axios client for backend communication
 │   │   ├── components/   # UI components (Navbar, Hero, Layouts, Charts)
-│   │   ├── context/      # React Context (DataContext for global state)
+│   │   ├── context/      # React Context (LanguageContext for global state)
 │   │   ├── pages/        # Route pages (Dashboard, Map, Rainfall, etc.)
 │   │   └── utils/        # Formatting and helper functions
 │   └── package.json
@@ -182,7 +176,7 @@ UI Delta Comparison (Before vs After)
 
 ## Risk Calculation Engine
 
-HIM-Guard uses a deterministic mathematical model in the backend (`backend/services/riskEngine.js`) to score risks. 
+PurvaDrishti uses a deterministic mathematical model in the backend (`backend/services/riskEngine.js`) to score risks. 
 
 **Landslide Formula Parameters (Weighted):**
 - Rainfall 24h (40%)
@@ -206,7 +200,7 @@ The system relies on the following MongoDB collections (defined in `backend/mode
 
 | Collection / Model | Purpose |
 | ------------------ | --------------------------- |
-| **District** | District weather, geography, and current risk scores |
+| **District** | District/State weather, geography, and current risk scores |
 | **Road** | Mountain passes and highway corridor statuses |
 | **Alert** | System-generated or user-broadcasted emergency alerts |
 | **Drone** | UAV fleet telemetry, battery levels, and mission status |
@@ -222,7 +216,7 @@ The Express server exposes the following JSON endpoints:
 | Method | Endpoint        | Description       |
 | ------ | --------------- | ----------------- |
 | `GET`  | `/api/weather/live` | Fetches aggregated weather & risk data |
-| `GET`  | `/api/districts`   | Get district risk and geo data |
+| `GET`  | `/api/districts`   | Get district/state risk and geo data |
 | `GET`  | `/api/roads`    | Get road vulnerabilities & status |
 | `GET`  | `/api/alerts`   | List active and resolved alerts |
 | `POST` | `/api/alerts`   | Broadcast a new emergency alert |
@@ -243,8 +237,8 @@ The Express server exposes the following JSON endpoints:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/HIM-Guard.git
-cd HIM-Guard
+git clone https://github.com/your-username/PurvaDrishti.git
+cd PurvaDrishti
 ```
 
 ### 2. Install all dependencies
@@ -261,7 +255,7 @@ Create a `.env` file in the `backend/` directory (you can copy `.env.example`):
 
 ```env
 # MongoDB Connection String (Required for persistence)
-MONGODB_URI=mongodb://127.0.0.1:27017/him_guard
+MONGODB_URI=mongodb://127.0.0.1:27017/purvadrishti
 
 # Backend API Port
 PORT=5000
@@ -296,7 +290,7 @@ npm run dev
 
 For hackathon presentation purposes, try the following flow:
 1. **Landing Page:** Open `http://localhost:5173/` to view the public intelligence dashboard.
-2. **Dashboard Overview:** Click "Open Dashboard" to view the executive command center (`/dashboard`).
+2. **Dashboard Overview:** Click "Enter PurvaDrishti" to view the executive command center (`/dashboard`).
 3. **Rainfall & GIS:** Navigate to `/rainfall` to see live Open-Meteo data, then `/map` for the geospatial view.
 4. **Risk Engines:** Check `/landslides` to see how the mathematical formula works.
 5. **Issue an Alert:** Go to `/alerts` and broadcast a new manual "Flash Flood" warning.
@@ -328,11 +322,4 @@ For hackathon presentation purposes, try the following flow:
 
 ## Team
 
-**Smart India Hackathon Team — HIM-Guard**
-
----
-
-## License
-
-No license has been specified yet.
-
+**Smart India Hackathon Team — PurvaDrishti**

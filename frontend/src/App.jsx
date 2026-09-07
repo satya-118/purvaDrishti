@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { DataProvider } from './context/DataContext.jsx';
+import { LanguageProvider } from './context/LanguageContext.jsx';
 import { DashboardLayout } from './layouts/DashboardLayout.jsx';
 
 // Pages
@@ -15,10 +16,12 @@ import { FireRiskPage } from './pages/FireRiskPage.jsx';
 import { AlertsPage } from './pages/AlertsPage.jsx';
 import { HistoricalPage } from './pages/HistoricalPage.jsx';
 import { SimulationPage } from './pages/SimulationPage.jsx';
+import FieldReportPage from './pages/FieldReportPage.jsx';
 
 export function App() {
   return (
-    <DataProvider>
+    <LanguageProvider>
+      <DataProvider>
       <BrowserRouter>
         <Routes>
           {/* Public Landing & Intelligence Presentation Page */}
@@ -37,6 +40,7 @@ export function App() {
             <Route path="/history" element={<HistoricalPage />} />
             <Route path="/historical" element={<Navigate to="/history" replace />} />
             <Route path="/simulation" element={<SimulationPage />} />
+            <Route path="/reports" element={<FieldReportPage />} />
           </Route>
 
           {/* Fallback wildcard redirect to landing page */}
@@ -44,6 +48,7 @@ export function App() {
         </Routes>
       </BrowserRouter>
     </DataProvider>
+    </LanguageProvider>
   );
 }
 

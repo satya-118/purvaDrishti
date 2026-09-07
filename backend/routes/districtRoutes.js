@@ -6,7 +6,7 @@ import { calculateLandslideRisk } from '../services/riskEngine.js';
 
 const router = express.Router();
 
-// GET /api/districts - List all 12 Himachal Pradesh districts with live risk calculations
+// GET /api/districts - List all NER districts with live risk calculations
 router.get('/', async (req, res) => {
   try {
     let districts;

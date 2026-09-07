@@ -28,7 +28,7 @@ export function RiskDistribution({ districts = [] }) {
           Risk Distribution
         </h3>
         <p className="text-[11.5px] text-[#6E756F] font-medium">
-          Across Himachal Pradesh
+          Across Northeast India regional sectors
         </p>
       </div>
 

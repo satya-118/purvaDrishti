@@ -12,7 +12,7 @@ export function DashboardHeader({ onGenerateReport }) {
           Dashboard
         </h1>
         <p className="text-[13.5px] sm:text-[14px] text-[#6E756F] font-medium mt-0.5">
-          Real-time disaster intelligence across Himachal Pradesh.
+          Real-time environmental and landslide risk intelligence across Northeast India.
         </p>
       </div>
 

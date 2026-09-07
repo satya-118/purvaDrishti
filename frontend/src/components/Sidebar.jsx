@@ -9,6 +9,7 @@ import {
   History,
   Activity
 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 // Specialized icons matching reference design
 const DroneNavIcon = ({ size = 17, className = '' }) => (
@@ -34,30 +35,33 @@ const RoadNavIcon = ({ size = 17, className = '' }) => (
 );
 
 export function Sidebar({ activeTab, onSelectTab, counts = {} }) {
+  const { t } = useLanguage();
+
   const sections = [
     {
-      title: 'OVERVIEW',
+      title: 'PRIMARY INTELLIGENCE',
       items: [
-        { id: 'overview', label: 'Dashboard', icon: LayoutDashboard },
-        { id: 'map', label: 'Live Map', icon: Map },
+        { id: 'overview', label: t('dashboard'), icon: LayoutDashboard },
+        { id: 'map', label: t('liveMap'), icon: Map },
+        { id: 'landslides', label: 'Risk Intelligence', icon: Mountain },
+        { id: 'roads', label: 'Connectivity & Infrastructure', icon: RoadNavIcon },
       ]
     },
     {
-      title: 'MONITORING',
+      title: 'ACTION & RESPONSE',
       items: [
-        { id: 'rainfall', label: 'Rainfall & Weather', icon: CloudRain },
-        { id: 'landslides', label: 'Landslide Risk', icon: Mountain },
-        { id: 'roads', label: 'Road Vulnerability', icon: RoadNavIcon },
-        { id: 'drones', label: 'Drone Fleet', icon: DroneNavIcon },
-        { id: 'fire', label: 'Forest Fire Risk', icon: Flame },
+        { id: 'alerts', label: 'Alerts & Response', icon: Bell, badge: counts.criticalAlerts || 2 },
+        { id: 'reports', label: 'Field Intelligence', icon: Activity },
+        { id: 'historical', label: 'History & Analytics', icon: History },
       ]
     },
     {
-      title: 'RESPONSE',
+      title: 'ADVANCED / SYSTEM',
       items: [
-        { id: 'alerts', label: 'Disaster Alerts', icon: Bell, badge: counts.criticalAlerts || 2 },
-        { id: 'historical', label: 'Historical Archive', icon: History },
-        { id: 'simulation', label: 'Emergency Simulation', icon: Activity },
+        { id: 'simulation', label: 'Prediction & Simulation', icon: Activity },
+        { id: 'rainfall', label: 'Data & Sensors', icon: CloudRain },
+        { id: 'drones', label: 'Fleet Administration', icon: DroneNavIcon },
+        { id: 'fire', label: 'Secondary Hazards (Fire)', icon: Flame },
       ]
     }
   ];
@@ -67,24 +71,24 @@ export function Sidebar({ activeTab, onSelectTab, counts = {} }) {
       
       {/* Brand Header */}
       <div 
-        className="px-5 h-[68px] flex items-center gap-3 cursor-pointer border-b border-[#EAE8E1]"
+        className="px-4 h-[68px] flex items-center gap-3 cursor-pointer border-b border-[#EAE8E1]"
         onClick={() => onSelectTab('home')}
       >
         {/* Geometric Mountain Icon */}
         <div className="w-8 h-8 flex items-center justify-center shrink-0">
-          <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 4L2 19.5H19L10.5 4Z" stroke="#234E3B" strokeWidth="2.4" strokeLinejoin="round"/>
-            <path d="M18.5 9.5L13 19.5H24L18.5 9.5Z" stroke="#789177" strokeWidth="2.2" strokeLinejoin="round"/>
-            <path d="M6 16.5L10.5 8.5L15 16.5" stroke="#D8A32A" strokeWidth="1.8" strokeLinecap="round"/>
+          <svg width="26" height="22" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 4L2 19.5H19L10.5 4Z" stroke="#19382B" strokeWidth="2.4" strokeLinejoin="round" fill="#19382B" fillOpacity="0.1"/>
+            <path d="M18.5 9.5L13 19.5H24L18.5 9.5Z" stroke="#789177" strokeWidth="2.2" strokeLinejoin="round" fill="#789177" fillOpacity="0.15"/>
+            <path d="M6 16.5L10.5 8.5L15 16.5" stroke="#D8A32A" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </div>
 
-        <div className="flex flex-col justify-center">
-          <div className="font-serif font-bold text-[18px] text-[#18211E] tracking-tight leading-none mb-1">
-            HIM-Guard
+        <div className="flex flex-col justify-center min-w-0">
+          <div className="font-sans font-extrabold text-[16px] text-[#18211E] tracking-tight leading-none mb-1">
+            PurvaDrishti
           </div>
-          <div className="text-[10px] text-[#6E756F] font-medium leading-[1.15]">
-            Himachal Pradesh<br/>Disaster Intelligence
+          <div className="text-[9.5px] text-[#6E756F] font-medium leading-[1.2] truncate">
+            Disaster Intelligence
           </div>
         </div>
       </div>

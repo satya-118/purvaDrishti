@@ -5,38 +5,38 @@ import { useNavigate } from 'react-router-dom';
 export function DistrictStatus({ districts = [], onSelectDistrict }) {
   const navigate = useNavigate();
 
-  // District rows matching reference image
+  // Northeast mountain district status rows matching regional risk profile
   const statusRows = [
     {
-      name: 'Kullu',
+      name: 'East Khasi Hills',
       level: 'HIGH',
       color: 'text-[#DC2626]',
       trend: '↑',
       trendColor: 'text-[#DC2626]'
     },
     {
-      name: 'Kangra',
+      name: 'Papum Pare',
       level: 'HIGH',
       color: 'text-[#DC2626]',
       trend: '↑',
       trendColor: 'text-[#DC2626]'
     },
     {
-      name: 'Chamba',
+      name: 'Kamrup Metro',
       level: 'ELEVATED',
       color: 'text-[#E36B25]',
       trend: '→',
       trendColor: 'text-[#E36B25]'
     },
     {
-      name: 'Shimla',
+      name: 'Kohima',
       level: 'ELEVATED',
       color: 'text-[#E36B25]',
       trend: '→',
       trendColor: 'text-[#E36B25]'
     },
     {
-      name: 'Mandi',
+      name: 'East Sikkim',
       level: 'MODERATE',
       color: 'text-[#D8A32A]',
       trend: '↓',

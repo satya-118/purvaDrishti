@@ -48,7 +48,7 @@ const icons = {
 function MapController() {
   const map = useMap();
   useEffect(() => {
-    map.setView([31.75, 77.25], 8);
+    map.setView([26.2006, 92.9376], 7.5);
   }, [map]);
   return null;
 }
@@ -73,16 +73,16 @@ export function MapView({
   };
 
   const handleResetCenter = () => {
-    if (mapRef.current) mapRef.current.setView([31.75, 77.25], 8);
+    if (mapRef.current) mapRef.current.setView([26.2006, 92.9376], 7.5);
   };
 
   return (
     <div className="relative w-full h-full min-h-[460px] rounded-xl overflow-hidden select-none">
       
       {/* Leaflet Map */}
-      <MapContainer 
-        center={[31.75, 77.25]} 
-        zoom={8} 
+      <MapContainer
+        center={[26.2006, 92.9376]}
+        zoom={7.5} 
         ref={mapRef}
         style={{ height: '100%', width: '100%', minHeight: '460px' }}
         zoomControl={false}
@@ -92,12 +92,12 @@ export function MapView({
         {/* Light geographic terrain tiles */}
         <TileLayer
           url="https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=cb1_2kyh_1_04ce1902ad036349dac0a0ac"
-          attribution='&copy; Satyam'
+          attribution='&copy; PurvaDrishti'
         />
 
-        {/* Concentric Heat Rings around Kullu (Critical Area from reference) */}
+        {/* Concentric Heat Rings around Meghalaya / Cherrapunji (Critical Area) */}
         <CircleMarker
-          center={[31.95, 77.10]}
+          center={[25.2986, 91.7314]}
           radius={55}
           pathOptions={{
             color: '#DC2626',
@@ -108,7 +108,7 @@ export function MapView({
           }}
         />
         <CircleMarker
-          center={[31.95, 77.10]}
+          center={[25.2986, 91.7314]}
           radius={38}
           pathOptions={{
             color: '#DC2626',
@@ -118,7 +118,7 @@ export function MapView({
           }}
         />
         <CircleMarker
-          center={[31.95, 77.10]}
+          center={[25.2986, 91.7314]}
           radius={22}
           pathOptions={{
             color: '#991B1B',
@@ -128,24 +128,25 @@ export function MapView({
           }}
         />
 
-        {/* Kullu Core Warning Marker */}
-        <Marker position={[31.95, 77.10]} icon={icons.criticalTriangle}>
+        {/* Meghalaya Core Warning Marker */}
+        <Marker position={[25.2986, 91.7314]} icon={icons.criticalTriangle}>
           <Popup>
             <div className="p-1 font-sans">
-              <div className="font-bold text-[14px] text-[#DC2626] mb-1">Kullu: CRITICAL WARNING</div>
-              <div className="text-[12px] text-[#4A534D]">Active flash-flood & landslide vulnerability</div>
+              <div className="font-bold text-[14px] text-[#DC2626] mb-1">East Khasi Hills: CRITICAL WARNING</div>
+              <div className="text-[12px] text-[#4A534D]">Active flash-flood & high-velocity landslide vulnerability</div>
             </div>
           </Popup>
         </Marker>
 
-        {/* District Risk & Landmark Markers */}
-        <Marker position={[32.55, 76.12]} icon={icons.rainStation} />
-        <Marker position={[32.21, 76.32]} icon={icons.rainStation} />
-        <Marker position={[31.50, 78.35]} icon={icons.rainStation} />
-        <Marker position={[31.10, 77.17]} icon={icons.fireRisk} />
-        <Marker position={[31.70, 76.93]} icon={icons.highTriangle} />
-        <Marker position={[31.65, 77.05]} icon={icons.highTriangle} />
-        <Marker position={[31.80, 77.40]} icon={icons.highTriangle} />
+        {/* Northeast Regional Risk & Landmark Markers */}
+        <Marker position={[27.0844, 93.6053]} icon={icons.highTriangle} />
+        <Marker position={[25.2750, 91.5822]} icon={icons.rainStation} />
+        <Marker position={[26.1445, 91.7362]} icon={icons.rainStation} />
+        <Marker position={[27.3389, 88.6065]} icon={icons.highTriangle} />
+        <Marker position={[25.6751, 94.1086]} icon={icons.highTriangle} />
+        <Marker position={[25.1833, 93.0167]} icon={icons.highTriangle} />
+        <Marker position={[23.7271, 92.7176]} icon={icons.rainStation} />
+        <Marker position={[23.8315, 91.2868]} icon={icons.fireRisk} />
 
       </MapContainer>
 
@@ -153,7 +154,7 @@ export function MapView({
       <div className="absolute top-4 right-4 z-[400] flex flex-col gap-2">
         <button 
           onClick={handleResetCenter}
-          title="Locate / Center HP"
+          title="Center Northeast Region"
           className="w-8 h-8 bg-white border border-[#E5E3D8] hover:bg-[#F5F4EE] rounded-lg shadow-sm flex items-center justify-center text-[#4A534D] transition-colors"
         >
           <Crosshair size={16} />

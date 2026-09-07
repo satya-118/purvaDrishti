@@ -22,32 +22,32 @@ export function DroneOperations({ drones = [] }) {
   const missions = [
     {
       id: 'drone-1',
-      district: 'Kullu Valley',
-      mission: 'Landslide corridor monitoring',
+      district: 'Shillong Valley',
+      mission: 'Landslide corridor LiDAR monitoring',
       status: 'LIVE',
       statusColor: 'text-[#1E4D38] bg-[#EAF3EE] border-[#C6E2D0]',
       iconColor: 'text-[#234E3B]'
     },
     {
       id: 'drone-2',
-      district: 'Chamba',
-      mission: 'Road inspection mission',
+      district: 'Siang Gorge',
+      mission: 'Slope inspection & telemetry',
       status: 'LIVE',
       statusColor: 'text-[#1E4D38] bg-[#EAF3EE] border-[#C6E2D0]',
       iconColor: 'text-[#4A534D]'
     },
     {
       id: 'drone-3',
-      district: 'Shimla',
-      mission: 'Fire surveillance',
+      district: 'Kohima Pass',
+      mission: 'Mountain route reconnaissance',
       status: 'STANDBY',
       statusColor: 'text-[#6E756F] bg-[#FAF9F5] border-[#E5E3D8]',
       iconColor: 'text-[#234E3B]'
     },
     {
       id: 'drone-4',
-      district: 'Shimla',
-      mission: 'Fire surveillance',
+      district: 'Dima Hasao',
+      mission: 'Hillside & railway cut monitoring',
       status: 'IN FLIGHT',
       statusColor: 'text-[#2563EB] bg-[#EFF6FF] border-[#BFDBFE]',
       iconColor: 'text-[#4A534D]'

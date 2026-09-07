@@ -8,14 +8,14 @@ export function DronePage() {
 
   const [selectedDrone, setSelectedDrone] = useState(null);
   const [dispatchModalOpen, setDispatchModalOpen] = useState(false);
-  const [targetDistrict, setTargetDistrict] = useState('Kullu');
+  const [targetDistrict, setTargetDistrict] = useState('East Khasi Hills');
   const [missionInput, setMissionInput] = useState('Urgent Landslide Slope Fissure Reconnaissance');
   const [priorityInput, setPriorityInput] = useState('High');
   const [submitting, setSubmitting] = useState(false);
 
   const handleOpenDispatch = (drone) => {
     setSelectedDrone(drone);
-    setTargetDistrict(drone.assignedDistrict || 'Kullu');
+    setTargetDistrict(drone.assignedDistrict || 'East Khasi Hills');
     setDispatchModalOpen(true);
   };
 
@@ -27,7 +27,7 @@ export function DronePage() {
         district: targetDistrict,
         mission: missionInput,
         missionPriority: priorityInput,
-        reason: 'Manual priority tasking by HIM-Guard Emergency Operations Center'
+        reason: 'Manual priority tasking by PurvaDrishti Emergency Operations Center'
       });
       setDispatchModalOpen(false);
       refreshData();
@@ -49,7 +49,7 @@ export function DronePage() {
             Drone Fleet & Aerial Telemetry
           </h1>
           <p className="text-[#7A827D] text-[13px] font-medium mt-0.5">
-            Autonomous UAV fleet deployed across steep Himachal Pradesh valleys with optical LiDAR & FLIR thermal payloads.
+            Autonomous UAV fleet deployed across steep mountain valleys with optical LiDAR & FLIR thermal payloads.
           </p>
         </div>
 

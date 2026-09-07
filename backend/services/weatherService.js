@@ -1,4 +1,4 @@
-// Weather Service: Integrates Open-Meteo Weather API with automatic caching and offline Himachal Pradesh fallback.
+// Weather Service: Integrates Open-Meteo Weather API with automatic caching and offline NER fallback.
 import { seedDistricts } from '../data/seedData.js';
 
 // Simple in-memory cache to prevent excessive external API calls
@@ -163,7 +163,7 @@ export async function getDistrictWeather(districtName, coordinates, fallback24h 
 }
 
 /**
- * Fetches weather summary for all 12 districts in Himachal Pradesh.
+ * Fetches weather summary for all NER districts.
  */
 export async function getAllDistrictsWeather() {
   const results = await Promise.all(

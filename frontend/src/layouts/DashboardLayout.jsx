@@ -66,9 +66,9 @@ export function DashboardLayout() {
 
         <main className="flex-1 overflow-y-auto bg-[#F7F6F1] px-6 py-6 lg:px-8 lg:py-7">
           {loading ? (
-            <div className="loading-state">
-              <div className="spinner"></div>
-              <p className="text-sm font-medium text-[#7A827D]">Initializing HIM-Guard Disaster Management Radar...</p>
+            <div className="flex flex-col items-center justify-center min-h-[400px] gap-3">
+              <div className="w-8 h-8 rounded-full border-2 border-[#19382B] border-t-transparent animate-spin"></div>
+              <p className="text-sm font-medium text-[#7A827D]">Initializing PurvaDrishti Disaster Intelligence Radar...</p>
             </div>
           ) : (
             <Outlet context={{

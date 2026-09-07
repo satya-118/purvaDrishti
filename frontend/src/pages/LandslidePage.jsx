@@ -259,7 +259,7 @@ export function LandslidePage(props) {
         <div className="lg:col-span-5 bg-white border border-[#EAE8E1] rounded-2xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col justify-between">
           <div className="mb-3">
             <h3 className="text-[15px] font-bold text-[#18211E]">District Vulnerability Rankings</h3>
-            <p className="text-[11px] text-[#7A827D]">12 districts evaluated in real time</p>
+            <p className="text-[11px] text-[#7A827D]">Regional mountain sectors evaluated in real time</p>
           </div>
 
           <div className="flex flex-col gap-2 overflow-y-auto max-h-[500px] pr-1">

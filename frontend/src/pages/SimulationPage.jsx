@@ -73,7 +73,7 @@ export function SimulationPage() {
             <span>Emergency Rainfall Surge & Simulation</span>
           </h1>
           <p className="text-[#6E756F] text-[13.5px] font-medium mt-0.5 max-w-3xl">
-            Simulate cloudburst events and extreme precipitation scenarios to visualize instant risk escalation across Himachal Pradesh districts and highway corridors.
+            Simulate cloudburst events and extreme precipitation scenarios to visualize instant risk escalation across vulnerable mountain districts and highway corridors.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export function SimulationPage() {
               value={targetDistrict}
               onChange={handleDistrictChange}
             >
-              <option value="all">All 12 Districts (Statewide Drill)</option>
+              <option value="all">All Regional Sectors (Northeast Drill)</option>
               {districts.map(d => (
                 <option key={d.name} value={d.name}>{d.name} District</option>
               ))}
@@ -312,7 +312,7 @@ export function SimulationPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#F0EFEA]">
           <div>
             <h3 className="font-serif text-[19px] sm:text-[21px] font-bold text-[#18211E]">
-              12 Districts Before vs After Simulation Telemetry
+              Regional Sectors Before vs After Simulation Telemetry
             </h3>
             <p className="text-[12px] text-[#6E756F] font-medium">
               Instant recalculation across all topographical, geological, and precipitation risk factors

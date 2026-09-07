@@ -1,40 +1,58 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ArrowRight, ChevronDown, MountainSnow, CloudRain, Flame, Map, Route, Plane } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ChevronDown, 
+  Mountain, 
+  CloudRain, 
+  Flame, 
+  Map, 
+  Route, 
+  Radio,
+  Menu,
+  X,
+  ShieldAlert
+} from 'lucide-react';
 
 export function HomeNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [intelOpen, setIntelOpen] = useState(false);
   const [monitorOpen, setMonitorOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isHome = location.pathname === '/';
 
   return (
-    <header className="w-full bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#E5E3D8] sticky top-0 z-50 px-4 md:px-8 py-3.5 transition-all">
-      <div className="max-w-[1520px] mx-auto flex items-center justify-between">
+    <header className="w-full bg-[#FAF9F5]/95 backdrop-blur-md border-b border-[#E5E3D8] sticky top-0 z-50 transition-all">
+      
+
+      <div className="max-w-[1540px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-10 py-3.5">
         {/* Brand Left */}
         <Link 
           to="/"
-          className="flex items-center gap-3 cursor-pointer select-none"
+          className="flex items-center gap-3 cursor-pointer select-none group"
         >
-          <div className="w-9 h-9 rounded-lg bg-[#19382B] flex items-center justify-center text-white shadow-sm">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+          {/* Stylized Multi-Peak Mountain Logo (Matches reference design) */}
+          <div className="w-10 h-10 rounded-xl bg-white border border-[#DCD9CC] shadow-xs flex items-center justify-center p-1.5 transition-transform group-hover:scale-105">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 4L2 19.5H19L10.5 4Z" stroke="#19382B" strokeWidth="2.4" strokeLinejoin="round" fill="#19382B" fillOpacity="0.1"/>
+              <path d="M18.5 9.5L13 19.5H24L18.5 9.5Z" stroke="#789177" strokeWidth="2.2" strokeLinejoin="round" fill="#789177" fillOpacity="0.15"/>
+              <path d="M6 16.5L10.5 8.5L15 16.5" stroke="#D8A32A" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </div>
           <div>
-            <div className="font-sans font-extrabold text-[1.15rem] text-[#18211E] tracking-tight leading-none">
-              HIM-Guard
+            <div className="font-sans font-extrabold text-[1.2rem] text-[#18211E] tracking-tight leading-none">
+              PurvaDrishti
             </div>
             <div className="text-[10.5px] text-[#6E756F] font-medium tracking-wide mt-0.5">
-              Himachal Pradesh Disaster Intelligence
+              Safer Communities. A More Resilient Northeast.
             </div>
           </div>
         </Link>
 
         {/* Center Navigation Links (Desktop) */}
-        <nav className="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-[#444E47]">
+        <nav className=" lg:flex items-center gap-7 text-[13.5px] font-medium text-[#444E47]">
           <Link
             to="/"
             className={`transition-colors relative py-1 ${isHome ? 'text-[#19382B] font-bold' : 'hover:text-[#19382B]'}`}
@@ -58,21 +76,21 @@ export function HomeNavbar() {
 
             {intelOpen && (
               <div 
-                className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-lg border border-[#E5E3D8] py-2 z-50 animate-fadeIn"
+                className="absolute top-full left-0 w-60 bg-white rounded-xl shadow-lg border border-[#E5E3D8] py-2 z-50 animate-fadeIn"
                 onMouseEnter={() => setIntelOpen(true)}
               >
                 <Link
                   to="/landslides"
                   onClick={() => setIntelOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
-                  <MountainSnow size={14} className="text-[#19382B]" />
+                  <Mountain size={14} className="text-[#19382B]" />
                   <span>Landslide Risk Engine</span>
                 </Link>
                 <Link
                   to="/rainfall"
                   onClick={() => setIntelOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
                   <CloudRain size={14} className="text-[#2563EB]" />
                   <span>Rainfall & Meteorology</span>
@@ -80,18 +98,18 @@ export function HomeNavbar() {
                 <Link
                   to="/fire"
                   onClick={() => setIntelOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
                   <Flame size={14} className="text-[#E36B25]" />
-                  <span>Forest Fire Intelligence</span>
+                  <span>Forest & Terrain Risk</span>
                 </Link>
                 <Link
                   to="/map"
                   onClick={() => setIntelOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
                   <Map size={14} className="text-[#19382B]" />
-                  <span>Geospatial State Radar</span>
+                  <span>Geospatial Radar</span>
                 </Link>
               </div>
             )}
@@ -110,13 +128,13 @@ export function HomeNavbar() {
 
             {monitorOpen && (
               <div 
-                className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-lg border border-[#E5E3D8] py-2 z-50 animate-fadeIn"
+                className="absolute top-full left-0 w-60 bg-white rounded-xl shadow-lg border border-[#E5E3D8] py-2 z-50 animate-fadeIn"
                 onMouseEnter={() => setMonitorOpen(true)}
               >
                 <Link
                   to="/roads"
                   onClick={() => setMonitorOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
                   <Route size={14} className="text-[#D8A32A]" />
                   <span>Highways & Mountain Passes</span>
@@ -124,10 +142,18 @@ export function HomeNavbar() {
                 <Link
                   to="/drones"
                   onClick={() => setMonitorOpen(false)}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#F5F4EE] text-xs font-medium text-[#2C3531] transition-colors"
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
                 >
-                  <Plane size={14} className="text-[#19382B]" />
-                  <span>Autonomous UAV Fleet</span>
+                  <Radio size={14} className="text-[#19382B]" />
+                  <span>Autonomous Surveillance Fleet</span>
+                </Link>
+                <Link
+                  to="/alerts"
+                  onClick={() => setMonitorOpen(false)}
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-[#FAF9F5] text-xs font-medium text-[#2C3531] transition-colors"
+                >
+                  <ShieldAlert size={14} className="text-[#DC2626]" />
+                  <span>Active Warning Broadcasts</span>
                 </Link>
               </div>
             )}
@@ -144,21 +170,21 @@ export function HomeNavbar() {
             to="/history"
             className="hover:text-[#19382B] transition-colors py-1"
           >
-            History
+            Resources
           </Link>
 
-          <Link
-            to="/simulation"
-            className="hover:text-[#19382B] transition-colors py-1"
+          <a
+            href="#about-section"
+            className="hover:text-[#19382B] transition-colors py-1 cursor-pointer"
           >
-            Simulation
-          </Link>
+            About
+          </a>
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3.5">
+        <div className="flex items-center gap-3">
           {/* Live indicator */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EAF0E9] border border-[#D5E0D4] text-[#19382B] text-[11.5px] font-semibold">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAF0E9] border border-[#D5E0D4] text-[#19382B] text-[11.5px] font-semibold">
             <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
             <span>LIVE</span>
           </div>
@@ -166,13 +192,89 @@ export function HomeNavbar() {
           {/* Open Dashboard Button */}
           <button
             onClick={() => navigate('/dashboard')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#19382B] hover:bg-[#234E3B] text-white text-[13px] font-medium shadow-sm transition-all duration-200 hover:shadow"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#19382B] hover:bg-[#234E3B] text-white text-[13px] font-semibold shadow-xs transition-all duration-200 hover:shadow"
           >
             <span>Open Dashboard</span>
             <ArrowRight size={14} />
           </button>
+
+          {/* Mobile hamburger menu toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-[#2C3531] hover:text-[#19382B] rounded-lg hover:bg-[#EAE7DC]"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-[#E5E3D8] bg-[#FAF9F5] px-5 py-4 space-y-3 animate-fadeIn">
+          <Link
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm font-semibold text-[#19382B]"
+          >
+            Home
+          </Link>
+          <Link
+            to="/landslides"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Landslide Risk Engine
+          </Link>
+          <Link
+            to="/rainfall"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Rainfall & Meteorology
+          </Link>
+          <Link
+            to="/map"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Regional Situation Map
+          </Link>
+          <Link
+            to="/roads"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Highway & Route Safety
+          </Link>
+          <Link
+            to="/alerts"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Active Alerts
+          </Link>
+          <Link
+            to="/simulation"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1.5 text-sm text-[#444E47] hover:text-[#19382B]"
+          >
+            Emergency Simulation Sandbox
+          </Link>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              navigate('/dashboard');
+            }}
+            className="w-full flex items-center justify-center gap-2 mt-2 px-4 py-2.5 rounded-xl bg-[#19382B] text-white text-sm font-semibold shadow-sm"
+          >
+            <span>Open Dashboard</span>
+            <ArrowRight size={15} />
+          </button>
+        </div>
+      )}
     </header>
   );
 }
+
+export default HomeNavbar;

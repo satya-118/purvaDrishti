@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// Road Model: Tracks vulnerable highway corridors and mountain passes in Himachal Pradesh
+// Road Model: Tracks vulnerable highway corridors and mountain passes in NER
 const roadSchema = new mongoose.Schema({
   name: { type: String, required: true },           // e.g. "NH-05 Hindustan-Tibet Highway"
   district: { type: String, required: true },       // e.g. "Kinnaur"

@@ -11,28 +11,28 @@ export function RainfallPage(props) {
   const onRefresh = props.onRefresh || contextData?.refreshData;
   const isRefreshing = props.isRefreshing ?? (contextData?.isRefreshing || false);
 
-  const [selectedDistrictName, setSelectedDistrictName] = useState('Mandi');
+  const [selectedDistrictName, setSelectedDistrictName] = useState('East Khasi Hills');
 
   const activeDistrictWeather = (weatherData?.data || []).find(
     d => d.name?.toLowerCase() === selectedDistrictName.toLowerCase()
   ) || weatherData?.data?.[0] || {
-    name: 'Mandi',
+    name: 'East Khasi Hills',
     severity: 'High',
-    currentRainfall: 12.4,
-    rainfall24h: 114,
-    rainfall1h: 18.2,
-    rainfall6h: 64.5,
-    rainfallAnomaly: 38,
-    temperatureC: 21,
-    humidityPct: 88,
-    windSpeedKmh: 14
+    currentRainfall: 16.4,
+    rainfall24h: 148,
+    rainfall1h: 22.4,
+    rainfall6h: 88.5,
+    rainfallAnomaly: 42,
+    temperatureC: 19,
+    humidityPct: 92,
+    windSpeedKmh: 16
   };
 
   const summary = weatherData?.summary || {
-    averageRainfall24h: 62,
-    highestRainfallDistrict: 'Mandi',
-    highestRainfallMm: 114,
-    activeRainDistrictsCount: 10,
+    averageRainfall24h: 74,
+    highestRainfallDistrict: 'East Khasi Hills',
+    highestRainfallMm: 148,
+    activeRainDistrictsCount: 8,
     extremeWarningCount: 2
   };
 
@@ -93,6 +93,7 @@ export function RainfallPage(props) {
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">ACTIVE RAIN ZONES</span>
             <span className="text-[26px] font-bold text-[#18211E] leading-tight">{summary.activeRainDistrictsCount}/12</span>
+            <span className="text-[26px] font-bold text-[#18211E] leading-tight">{summary.activeRainDistrictsCount || 8} Active</span>
             <span className="text-[11px] font-medium text-[#7A827D]">Precipitation &gt; 10 mm</span>
           </div>
         </div>
@@ -105,6 +106,7 @@ export function RainfallPage(props) {
             <span className="text-[10px] font-bold text-[#7A827D] tracking-wider uppercase">EXTREME WARNINGS</span>
             <span className="text-[26px] font-bold text-[#DC2626] leading-tight">{summary.extremeWarningCount}</span>
             <span className="text-[11px] font-medium text-[#DC2626]">Mandi & Kullu corridors</span>
+            <span className="text-[11px] font-medium text-[#DC2626]">East Khasi Hills & Dima Hasao corridors</span>
           </div>
         </div>
       </div>
@@ -116,7 +118,7 @@ export function RainfallPage(props) {
         <div className="lg:col-span-8 bg-white border border-[#EAE8E1] rounded-2xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h3 className="text-[15px] font-bold text-[#18211E]">{activeDistrictWeather.name || 'Himachal'} Precipitation Timeline</h3>
+              <h3 className="text-[15px] font-bold text-[#18211E]">{activeDistrictWeather.name || 'Regional'} Precipitation Timeline</h3>
               <p className="text-[11px] text-[#7A827D]">Hourly rainfall gradient and peak measurement</p>
             </div>
 
@@ -202,6 +204,7 @@ export function RainfallPage(props) {
         <div className="p-4 border-b border-[#EAE8E1] flex justify-between items-center">
           <div>
             <h3 className="text-[15px] font-bold text-[#18211E]">12-District Precipitation Comparison</h3>
+            <h3 className="text-[15px] font-bold text-[#18211E]">Regional Precipitation Comparison</h3>
             <p className="text-[11px] text-[#7A827D]">Ranked by 24h accumulated rainfall</p>
           </div>
         </div>

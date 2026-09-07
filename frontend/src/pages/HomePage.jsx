@@ -28,7 +28,7 @@ export function HomePage() {
       {/* Centered Page Layout Container with generous padding */}
       <div className="max-w-[1560px] mx-auto px-3 sm:px-6 lg:px-8 py-2 md:py-4">
         {/* Navigation Header */}
-        <div className="rounded-2xl   border border-[#E5E3D8] bg-[#FAF9F5] mb-4 shadow-xs">
+        <div className="rounded-2xl border border-[#E5E3D8] bg-[#FAF9F5] mb-4 shadow-xs overflow-hidden">
           <HomeNavbar />
         </div>
 
@@ -39,8 +39,10 @@ export function HomePage() {
         <StatsStrip
           stats={{
             activeAlerts: activeAlertsCount,
+            locationsOnWatch: districtsOnWatchCount,
             districtsOnWatch: districtsOnWatchCount,
-            vulnerableRoads: highRiskRoadsCount
+            vulnerableRoads: highRiskRoadsCount,
+            riskAssessments: 86
           }}
         />
 

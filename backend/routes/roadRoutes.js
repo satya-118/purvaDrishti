@@ -5,7 +5,7 @@ import { inMemoryStore } from '../data/store.js';
 
 const router = express.Router();
 
-// GET /api/roads - Get all vulnerable road segments in Himachal Pradesh
+// GET /api/roads - Get all vulnerable road segments in NER
 router.get('/', async (req, res) => {
   try {
     let roads;

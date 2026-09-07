@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// HistoricalIncident Model: Archive of past disaster events in Himachal Pradesh
+// HistoricalIncident Model: Archive of past disaster events in NER
 const historicalIncidentSchema = new mongoose.Schema({
   date: { type: String, required: true },               // e.g. "2023-08-14"
   year: { type: Number, default: 2023 },

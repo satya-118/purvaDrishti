@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export function WhatNeedsAttention({ alerts = [] }) {
   const navigate = useNavigate();
 
-  // Dynamic alerts or pristine default list matching the reference image
+  // Regional alerts default list matching Northeast India risk corridors
   const defaultAlerts = [
     {
       id: 'alert-1',
@@ -15,7 +15,7 @@ export function WhatNeedsAttention({ alerts = [] }) {
       iconColor: 'text-[#DC2626]',
       iconBg: 'bg-[#FEE2E2]',
       title: 'Flash-flood / landslide warning',
-      district: 'Kinnaur',
+      district: 'Dima Hasao Corridor',
       detail: 'Updated 4 min ago',
       cardBg: 'bg-[#FEF7F6]',
       borderColor: 'border-[#FDD8D5]'
@@ -28,7 +28,7 @@ export function WhatNeedsAttention({ alerts = [] }) {
       iconColor: 'text-[#E36B25]',
       iconBg: 'bg-[#FFEDD5]',
       title: 'Landslide Risk',
-      district: 'Kullu',
+      district: 'East Khasi Hills',
       detail: 'Risk score 82/100',
       cardBg: 'bg-[#FFF8F2]',
       borderColor: 'border-[#FEE9D6]'
@@ -41,8 +41,8 @@ export function WhatNeedsAttention({ alerts = [] }) {
       iconColor: 'text-[#E36B25]',
       iconBg: 'bg-[#FFEDD5]',
       title: 'Heavy Rainfall',
-      district: 'Kangra',
-      detail: '62 mm recorded in 3 hr',
+      district: 'Cherrapunji AWS',
+      detail: '148 mm recorded in 3 hr',
       cardBg: 'bg-[#FFF8F2]',
       borderColor: 'border-[#FEE9D6]'
     },
@@ -53,9 +53,9 @@ export function WhatNeedsAttention({ alerts = [] }) {
       icon: Flame,
       iconColor: 'text-[#D8A32A]',
       iconBg: 'bg-[#FEF3C7]',
-      title: 'Fire Risk',
-      district: 'Shimla',
-      detail: 'Elevated • Dry conditions',
+      title: 'Slope Fissure Alert',
+      district: 'Papum Pare',
+      detail: 'Elevated • Unstable strata',
       cardBg: 'bg-[#FFFDF5]',
       borderColor: 'border-[#FDF0D5]'
     }

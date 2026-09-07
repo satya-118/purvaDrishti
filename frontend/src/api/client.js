@@ -1,4 +1,4 @@
-// HIM-Guard API Client
+// PurvaDrishti API Client
 // Handles all HTTP requests to Express Backend with error handling and fallback support.
 
 const API_BASE = '/api';

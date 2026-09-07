@@ -13,7 +13,7 @@ const RoadItemIcon = ({ size = 15, className = '' }) => (
 export function RecentIntelligence({ alerts = [], historical = [] }) {
   const navigate = useNavigate();
 
-  // 4 Timeline items matching reference image
+    // 4 Timeline items matching Northeast regional intelligence
   const feedItemsCol1 = [
     {
       id: 'intel-1',
@@ -22,7 +22,7 @@ export function RecentIntelligence({ alerts = [], historical = [] }) {
       iconColor: 'text-[#DC2626]',
       iconBg: 'bg-[#FEE2E2]',
       title: 'Landslide report received',
-      location: 'Manali–Rohtang corridor, Kullu'
+      location: 'Shillong Peak Bypass, Meghalaya'
     },
     {
       id: 'intel-2',
@@ -31,7 +31,7 @@ export function RecentIntelligence({ alerts = [], historical = [] }) {
       iconColor: 'text-[#2563EB]',
       iconBg: 'bg-[#EFF6FF]',
       title: 'Rainfall threshold exceeded',
-      location: 'Dharamshala, Kangra'
+      location: 'Cherrapunji AWS, Meghalaya'
     }
   ];
 
@@ -43,7 +43,7 @@ export function RecentIntelligence({ alerts = [], historical = [] }) {
       iconColor: 'text-[#18211E]',
       iconBg: 'bg-[#EFEEE7]',
       title: 'Road risk elevated',
-      location: 'Chamba district'
+      location: 'Banderdewa Corridor, Arunachal'
     },
     {
       id: 'intel-4',
@@ -51,8 +51,8 @@ export function RecentIntelligence({ alerts = [], historical = [] }) {
       icon: Flame,
       iconColor: 'text-[#E36B25]',
       iconBg: 'bg-[#FFEDD5]',
-      title: 'Fire risk increased',
-      location: 'Shimla region'
+      title: 'Hill slope fissure alert',
+      location: 'Kohima Ridge, Nagaland'
     }
   ];
 
@@ -66,7 +66,7 @@ export function RecentIntelligence({ alerts = [], historical = [] }) {
             Recent Intelligence
           </h3>
           <p className="text-[11.5px] text-[#6E756F] font-medium">
-            Latest updates from across the state
+            Latest updates from across the Northeast region
           </p>
         </div>
 
