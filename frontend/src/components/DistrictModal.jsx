@@ -75,7 +75,7 @@ export function DistrictModal({ district, onClose }) {
             Key Risk Factors
           </h4>
 
-          <div className="grid grid-cols-2 gap-3 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
             <div className="bg-[#F5F4EE] p-4 rounded-xl border border-[#E5E3D8]">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-[#6E756F] mb-1">
                 <CloudRain size={16} className="text-[#4C89C7]" /> 24h Precipitation

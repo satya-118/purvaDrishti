@@ -36,7 +36,7 @@ export default function FieldReportPage() {
 
   const fetchReports = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/reports');
+      const response = await fetch('/api/reports');
       const json = await response.json();
       if (json.success) setReports(json.data);
     } catch (e) {
@@ -51,7 +51,7 @@ export default function FieldReportPage() {
     let synced = 0;
     for (const report of offlineReports) {
       try {
-        await fetch('http://localhost:5000/api/reports', {
+        await fetch('/api/reports', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(report)
@@ -105,7 +105,7 @@ export default function FieldReportPage() {
       alert('You are offline. Report saved locally and will sync when connection returns.');
     } else {
       try {
-        const response = await fetch('http://localhost:5000/api/reports', {
+        const response = await fetch('/api/reports', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(reportPayload)

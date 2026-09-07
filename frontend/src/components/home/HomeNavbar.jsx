@@ -45,14 +45,14 @@ export function HomeNavbar() {
             <div className="font-sans font-extrabold text-[1.2rem] text-[#18211E] tracking-tight leading-none">
               PurvaDrishti
             </div>
-            <div className="text-[10.5px] text-[#6E756F] font-medium tracking-wide mt-0.5">
+            <div className="hidden sm:block text-[10.5px] text-[#6E756F] font-medium tracking-wide mt-0.5">
               Safer Communities. A More Resilient Northeast.
             </div>
           </div>
         </Link>
 
         {/* Center Navigation Links (Desktop) */}
-        <nav className=" lg:flex items-center gap-7 text-[13.5px] font-medium text-[#444E47]">
+        <nav className="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-[#444E47]">
           <Link
             to="/"
             className={`transition-colors relative py-1 ${isHome ? 'text-[#19382B] font-bold' : 'hover:text-[#19382B]'}`}
@@ -211,7 +211,7 @@ export function HomeNavbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#E5E3D8] bg-[#FAF9F5] px-5 py-4 space-y-3 animate-fadeIn">
+        <div className="lg:hidden absolute top-full left-0 w-full border-t border-[#E5E3D8] bg-[#FAF9F5] px-5 py-4 space-y-3 shadow-lg animate-fadeIn z-50">
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}

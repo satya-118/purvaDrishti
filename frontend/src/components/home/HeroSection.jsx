@@ -24,7 +24,7 @@ export function HeroSection({ onSelectDistrict }) {
       <img
         src="/NER-outline.png"
         alt="Northeast Risk Map"
-        className="absolute right-0 top-0 w-full md:w-1/2 h-full object-fill object-left opacity-70 pointer-events-none"
+        className="absolute right-0 top-0 w-full md:w-1/2 h-full object-cover object-center md:object-left opacity-70 pointer-events-none"
       />
 
       {/* Hero Content Layer */}
